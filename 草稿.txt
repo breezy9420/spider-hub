@@ -1,0 +1,12 @@
+2-3-1-7-4-6-0-5-8
+
+2: var _0x2059bf = Date.now() => 1761583593000
+3: var _0x350b3a = _0x1e5c29() => 29f188affd13ff406af9c7bf29333897
+1：page=1 => json字符串 => // '{"page":"1"}' _0x3f9dab 
+7: var _0x3104de = mmm(_0x3f9dab + _0x350b3a + _0x2059bf) => b0e19b7f52785621aeedcde2b0fd2fd5
+4: _0x3565b7.data = '{"page":"1"}'
+6: _0x3565b7['setRequestHeader']('t', _0x2059bf)
+0: _0x3565b7['setRequestHeader']('r', _0x350b3a)
+5: _0x3565b7['setRequestHeader']('s', _0x3104de)
+
+核心方法：_0x1e5c29、mmm

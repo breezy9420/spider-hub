@@ -1,0 +1,28 @@
+{
+  "name": "spider-hub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/generator": "^7.24.1",
+    "@babel/parser": "^7.24.1",
+    "@babel/traverse": "^7.24.1",
+    "@babel/types": "^7.24.0",
+    "@types/crypto-js": "^4.2.2",
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "crypto-js": "^4.2.0",
+    "jquery": "^3.6.0",
+    "js-base64": "^3.7.7",
+    "log4js": "^6.9.1",
+    "p-limit": "^6.1.0",
+    "qs": "^6.12.3"
+  }
+}

@@ -1,0 +1,49 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+# .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+
+# Configuration files that may contain sensitive information
+config.json
+config.local.json
+
+# Temporary files
+tmp/
+temp/
+
+# Coverage reports (if you have tests)
+coverage/
+
+# SQLite databases (commonly used in spider projects)
+*.db
+*.sqlite
+
+# Chrome/Chromium user data (if using puppeteer)
+.puppeteerrc
+chrome-profile/
+
+# Package manager lock files
+package-lock.json
+yarn.lock
