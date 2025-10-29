@@ -24,6 +24,13 @@
       "name": "12",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\src\\马上爬\\12.js"
+    },
+        {
+      "type": "node",
+      "request": "launch",
+      "name": "astHelpXhr14",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\src\\ast\\astHelpXhr14.js"
     }
   ]
 }
