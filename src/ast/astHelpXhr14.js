@@ -3,7 +3,6 @@ import types from "@babel/types";
 import traverseModule from "@babel/traverse";
 import * as path from "path";
 import { fileURLToPath } from "url";
-import { callExpression } from "@babel/types";
 
 const traverse = traverseModule.default || traverseModule;
 
@@ -104,6 +103,17 @@ function computedCommon(path) {
       );
     }
   }
+
+  if (
+    types.isStringLiteral(path.node.left) &&
+    types.isStringLiteral(path.node.right)
+  ) {
+    const leftVal = path.node.left.value;
+    const rightVal = path.node.right.value;
+    const res = leftVal + rightVal;
+    path.replaceWith(types.stringLiteral(res));
+  }
+
   if (
     types.isLiteral(path.node.left) &&
     types.isUnaryExpression(path.node.right)
@@ -165,27 +175,45 @@ function computedCommon(path) {
 
 // 14['toString'](22)  还原这种字符串加密
 function dynamicEncryptStr(path) {
+  if (!types.isCallExpression(path.node)) return;
   const { node } = path;
   const { callee, arguments: args } = node;
-  if (types.isMemberExpression(callee) && args?.length === 1) {
+  if (types.isMemberExpression(callee)) {
     const { object, property } = callee;
     if (
-      !types.isNumericLiteral(object) ||
-      !types.isIdentifier(property) ||
-      !types.isNumericLiteral(args[0])
-    )
-      return;
-    const obj = path.node.callee.object.value;
-    const func = path.node.callee.property.name;
-    const param = args[0].value;
-    const plainText = eval(`${obj}['${func}'](${param})`);
-    path.parentPath.replaceWith(types.stringLiteral(plainText));
+      (types.isNumericLiteral(object) || types.isStringLiteral(object)) &&
+      (types.isStringLiteral(property) || types.isIdentifier(property)) &&
+      types.isNumericLiteral(args[0])
+    ) {
+      const obj = object.value;
+      const func = property.value ?? property.name;
+      const param = args[0].value;
+      const plainText = eval(`${obj}['${func}'](${param})`);
+      console.log(
+        `dynamicEncryptStr: ${obj}['${func}'](${param}) => ${plainText}`
+      );
+      path.replaceWith(types.stringLiteral(plainText));
+    }
   }
 }
 
-// @todo 解密模板字符串
-function encryptTemplateLiteral(path) {
+// `${"en"}u${"me"}r${"able"}` => "enable"
+function decryptTemplateLiteral(path) {
   if (types.isTemplateLiteral(path.node)) {
+    const { expressions, quasis } = path.node;
+    let txt = "";
+    for (const expression of expressions) {
+      if (types.isStringLiteral(expression)) {
+        txt += expression.value;
+      }
+    }
+    for (const quasi of quasis) {
+      if (types.isTemplateElement(quasi)) {
+        txt += quasi.value.raw;
+      }
+    }
+    console.log(`decryptTemplateLiteral: ${txt}`);
+    path.replaceWith(types.stringLiteral(txt));
   }
 }
 
@@ -201,15 +229,33 @@ async function main() {
     VariableDeclarator(path) {
       encryptStr_a0_0x17ef1c(path, "a0_0xd3d3");
     },
+  });
+  traverse(ast, {
     BinaryExpression(path) {
       computedCommon(path);
     },
+  });
+  traverse(ast, {
     CallExpression(path) {
       dynamicEncryptStr(path);
     },
   });
-  let newAst = getAstByJs(getJsByAst(ast));
-  traverse(newAst, {
+  traverse(ast, {
+    BinaryExpression(path) {
+      computedCommon(path);
+    },
+  });
+  traverse(ast, {
+    TemplateLiteral(path) {
+      decryptTemplateLiteral(path);
+    },
+  });
+  traverse(ast, {
+    BinaryExpression(path) {
+      computedCommon(path);
+    },
+  });
+  traverse(ast, {
     Identifier(path) {
       removeUnusedCode(path);
     },

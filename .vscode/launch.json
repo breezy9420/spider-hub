@@ -4,13 +4,6 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-     {
-      "type": "node",
-      "request": "launch",
-      "name": "草稿",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\草稿.js"
-    },
     {
       "type": "node",
       "request": "launch",
@@ -25,12 +18,19 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\src\\马上爬\\12.js"
     },
-        {
+    {
       "type": "node",
       "request": "launch",
       "name": "astHelpXhr14",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\src\\ast\\astHelpXhr14.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\test.js"
     }
   ]
 }
