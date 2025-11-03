@@ -1092,5 +1092,6 @@ function init(n = arr1, t = arr2) {
 
 init();
 util.rt.Init();
+export const getV = (ts) => util.rt.update(ts);
 
-export const getV = (ts)=> util.rt.getV(ts);
+// console.log(getV(Date.now()));
