@@ -12,7 +12,7 @@ var document = {
   },
 };
 
-// @todo JDst_behavior_flag、JDst_rac_last_update 这两个参数会变化
+// @todo 这里严格来说没有完全补好环境
 const mockLocalStorage = {
   JDst_behavior_flag: `[{"t":1762277966623,"e":3600,"v":"Fh"}]`,
   JDst_rac_last_update: `{"v":1762277700660}`,
