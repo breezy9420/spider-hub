@@ -4,7 +4,7 @@ import { sleep } from "../../util/index.js";
 import PcSign from "./fixEnvByPcSign16.js";
 
 const COOKIE =
-  "sessionid=4th2zknlbxxlr11az0vqmqvkraf75env; Hm_lvt_0d2227abf9548feda3b9cb6fddee26c0=1762266312,1762274666; HMACCOUNT=EAC266F93ECB9023; Hm_lpvt_0d2227abf9548feda3b9cb6fddee26c0=1762276071";
+  "sessionid=4th2zknlbxxlr11az0vqmqvkraf75env; Hm_lvt_0d2227abf9548feda3b9cb6fddee26c0=1762266312,1762274666; HMACCOUNT=EAC266F93ECB9023; Hm_lpvt_0d2227abf9548feda3b9cb6fddee26c0=1762277861";
 
 async function parseInfo(i) {
   const url = `https://www.mashangpa.com/api/problem-detail/16/data/`;
@@ -13,7 +13,7 @@ async function parseInfo(i) {
     page: i,
     t,
   };
-  data.h5 = PcSign.sign(data);
+  data.h5 = await PcSign.sign(data);
   try {
     const res = await axios({
       url,

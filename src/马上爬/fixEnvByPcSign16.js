@@ -14,7 +14,7 @@ var document = {
 
 // @todo JDst_behavior_flag、JDst_rac_last_update 这两个参数会变化
 const mockLocalStorage = {
-  JDst_behavior_flag: `[{"t":1762277708126,"e":3600,"v":"Fh"}]`,
+  JDst_behavior_flag: `[{"t":1762277966623,"e":3600,"v":"Fh"}]`,
   JDst_rac_last_update: `{"v":1762277700660}`,
   WQ_dy1_tk_algo: `{"wwcppcwrw93xsda0":{"b5216":{"v":"eyJ0ayI6InRrMDN3YjhjNTFjYmMxOG5jWERBNmh5Q09GWXk0bFNwYks0SDY2cHJIWFJYY3Yyai1iUnRpVWp4eUhhd2dJOXlzS1Z2Q3NZTXVmeTJrNmZqWUtseVctMDVuVkNLIiwiYWxnbyI6ImZ1bmN0aW9uIHRlc3QodGssZnAsdHMsYWksYWxnbyl7dmFyIHJkPSdPRk8wM1gwYUgwbGMnO3ZhciBzdHI9XCJcIi5jb25jYXQodGspLmNvbmNhdChmcCkuY29uY2F0KHRzKS5jb25jYXQoYWkpLmNvbmNhdChyZCk7cmV0dXJuIGFsZ28uTUQ1KHN0cik7fSJ9","e":86400,"t":1762266533472}}}`,
   WQ_dy1_vk: `{"5.0":{"b5216":{"e":31536000,"v":"wwcppcwrw93xsda0","t":1762266533282}}}`,
@@ -38,7 +38,7 @@ var window = {
   document,
   localStorage,
 };
-Date.now = () => 1762277052102;
+// Date.now = () => 1762277052102;
 
 var Sign = (function () {
   function a04afa8n(_$c, _$n) {
@@ -15453,12 +15453,12 @@ window.PcSign = new window.Sign({
   },
 });
 
-window.PcSign.sign({
-  page: 1,
-  t: 1762277052095,
-}).then(function (e) {
-  console.log(e);
-});
+// window.PcSign.sign({
+//   page: 1,
+//   t: 1762277052095,
+// }).then(function (e) {
+//   console.log(e);
+// });
 
 export default window.PcSign;
 
