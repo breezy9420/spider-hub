@@ -31,6 +31,13 @@
       "name": "test",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\test.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "fixEnvByPcSign16",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\src\\马上爬\\fixEnvByPcSign16.js"
     }
   ]
 }
