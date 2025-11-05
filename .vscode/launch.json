@@ -45,6 +45,13 @@
       "name": "17",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\src\\马上爬\\17.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "19",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\src\\马上爬\\19.js"
     }
   ]
 }
