@@ -1,20 +1,31 @@
 import axios from "axios";
 import {logger} from "../../util/logUtil.js";
-import {sleep, getRandomUA} from "../../util/index.js";
+import {getRandomUA} from "../../util/index.js";
+import CryptoJs from "crypto-js";
 
 const COOKIE = "sessionid=rneo4mdcwheellramf2151xr3l34p0n6";
 
+const getMd5 = (plainText) => {
+    return CryptoJs.MD5(CryptoJs.enc.Latin1.parse(plainText)).toString();
+};
+
 async function parseInfo(i) {
-    const url = `https://www.spiderdemo.cn/sec1/api/challenge/page/${i}/?challenge_type=header_check`;
+    const url = `https://www.spiderdemo.cn/ob/api/ob_challenge1/page/${i}/`;
+    const ts = Date.now();
+    const params = {
+        challenge_type: "ob_challenge1",
+        sign: getMd5(`${ts}${i}£¬¡£fdjf,jkgfkl`),
+        timestamp: ts
+    };
     try {
         const res = await axios({
             url,
             method: "get",
             headers: {
-                // referer: "https://www.mashangpa.com/problem-detail/19/",
                 cookie: COOKIE,
-                'User-Agent': getRandomUA(),
+                "User-Agent": getRandomUA(),
             },
+            params
         });
         return res.data.page_data;
     } catch (e) {
