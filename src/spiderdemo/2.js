@@ -2,8 +2,8 @@ import axios from "axios";
 import {logger} from "../../util/logUtil.js";
 import {getRandomUA} from "../../util/index.js";
 import CryptoJs from "crypto-js";
+import { COOKIE } from "./config.js"
 
-const COOKIE = "sessionid=rneo4mdcwheellramf2151xr3l34p0n6";
 
 const getMd5 = (plainText) => {
     return CryptoJs.MD5(CryptoJs.enc.Latin1.parse(plainText)).toString();

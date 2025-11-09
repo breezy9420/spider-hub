@@ -1,8 +1,7 @@
 import axios from "axios";
-import {logger} from "../../util/logUtil.js";
-import {sleep, getRandomUA} from "../../util/index.js";
-
-const COOKIE = "sessionid=rneo4mdcwheellramf2151xr3l34p0n6";
+import { logger } from "../../util/logUtil.js";
+import { sleep, getRandomUA } from "../../util/index.js";
+import { COOKIE } from "./config.js"
 
 async function parseInfo(i) {
     const url = `https://www.spiderdemo.cn/sec1/api/challenge/page/${i}/?challenge_type=header_check`;
