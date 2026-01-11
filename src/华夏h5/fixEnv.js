@@ -50,19 +50,23 @@ function aesEncrypt(e, t = cipherWorkKey.aesKey, n = encodeWords) {
 }
 
 function signHmacMd5(e, t = cipherWorkKey.hmd5Key) {
-  let r = "",
-    o = [];
-  signWords.forEach(function (t) {
-    e[t] && o.push(e[t]);
-  });
-  r = o.join(" ");
-  return CryptoJS.HmacMD5(r, t).toString().toUpperCase();
+  // let r = "",
+  //   o = [];
+  // signWords.forEach(function (t) {
+  //   e[t] && o.push(e[t]);
+  // });
+  // r = o.join(" ");
+  // console.log(r,r === e.request_time);
+  return CryptoJS.HmacMD5(e, t).toString().toUpperCase();
 }
 
-cipherWorkKey.hmd5Key = aesDecrypt(workKey.hmd5Key, mainKey);
-cipherWorkKey.aesKey = aesDecrypt(workKey.aesKey, mainKey);
-// console.log(`cipherWorkKey.hmd5Key: ${cipherWorkKey.hmd5Key}`);
-// console.log(`cipherWorkKey.aesKey: ${cipherWorkKey.aesKey}`);
+cipherWorkKey.hmd5Key = _aesDecrypt(workKey.hmd5Key, mainKey);
+cipherWorkKey.aesKey = _aesDecrypt(workKey.aesKey, mainKey);
+console.log(`cipherWorkKey.hmd5Key: ${cipherWorkKey.hmd5Key}`);
+console.log(`cipherWorkKey.aesKey: ${cipherWorkKey.aesKey}`);
+
+// console.log(_aesEncrypt("110101193902124549", cipherWorkKey.aesKey));
+
 
 // let obj = {
 //   head_osnumber: "123",
@@ -75,7 +79,7 @@ cipherWorkKey.aesKey = aesDecrypt(workKey.aesKey, mainKey);
 //   system_id: "hxmark",
 //   request_time: "20260111203856",
 // };
-// obj.head_mac = signHmacMd5(obj, cipherWorkKey.hmd5Key);
+// obj.head_mac = signHmacMd5(obj.request_time, cipherWorkKey.hmd5Key);
 // obj = aesEncrypt(obj, cipherWorkKey.aesKey);
 // console.log(obj);
 
