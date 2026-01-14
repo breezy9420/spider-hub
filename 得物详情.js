@@ -1307,7 +1307,6 @@ const obj = (function (eBreezy) {
             p = At;
             try {
               s && ((c = ar(s, i)), (u = "1"));
-              console.log(c);
             } catch (t) {
               (c = s), (u = kt);
             }
@@ -1525,7 +1524,7 @@ const obj = (function (eBreezy) {
   return tbreezy;
 })();
 
-export function getSign(t, e, n) {
+function getSign(t, e = "19bc545a393a25177083d4a748807cc0", n = false) {
   void 0 === e && (e = "048a9c4943398714b356a696503d2d36"),
     void 0 === n && (n = !1),
     n && console.log("转化前params=", t);
@@ -1588,74 +1587,127 @@ var wx = {
   },
 };
 
-const reqData = {
-  extDatas: [{ name: "source", value: "wx" }],
-  abTests: [
-    { name: "572_consolegame", value: "1" },
-    { name: "536_Labelgeneration", value: "3" },
-    { name: "540_GoodsStory", value: "1" },
-    { name: "540_FirstContent", value: "5" },
-    { name: "2024_detail_20", value: "11" },
-    { name: "536_Labelgeneration", value: "11" },
-  ],
-  dressUpReqMap: {
-    source: 0,
-    limit: 12,
+async function getDetailV5() {
+  const { productId, spuId, skuId, propertyValueId } = {
     productId: 26981283,
-    cSpuPropertyValueId: 0,
-    firstSpuId: 0,
-    firstPropertyValueId: 0,
-    ab539CdjxBodyinfo: "0",
-    ab540Deletesidebar: "0",
-    switchoverMinPic: "",
-    ab525JingXuanMerge: "2",
-    ab534DpVideo: "0",
-  },
-  appraiseReqMap: {
     spuId: 26981283,
-    propertyValueId: 0,
-    abFields: { v535LV6wd: "0", abDetailpageSize: "0", v544NewDpModel: "0" },
-  },
-  buyLayerReq: {
-    bizDetailReq: {
-      openId: "ouhDM4lHr9wumYpm81YLAvEVGSxI",
-      appId: "h5",
-      extraMap: { app_type: "h5" },
-    },
-    extMap: { appId: "h5" },
-    anchorId: 0,
-    extBodys: [
-      { name: "gmfcpmd492", value: "0" },
-      { name: "550_shixiao", value: "1" },
-      { name: "detail2023promo", value: "0" },
-      { name: "5.30_fenqiWenan", value: "0" },
-      { name: "543_price", value: "0" },
-      { name: "543_lmsd", value: "0" },
-      { name: "544youhui", value: "0" },
-      { name: "545dingzi", value: "0" },
-      { name: "544xdk", value: "0" },
-      { name: "scene", value: "commodityDetail" },
-      { name: "businessDetailVersion", value: "V2" },
+    skuId: 927153807,
+    propertyValueId: 801610194,
+  };
+  const openId = "ouhDM4lHr9wumYpm81YLAvEVGSxI";
+
+  const url = "https://app.dewu.com/api/v1/h5/index/fire/flow/product/detailV5";
+  const UA =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36";
+  // const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090c37)XWEB/14185"
+  const reqData = {
+    extDatas: [{ name: "source", value: "h5" }],
+    abTests: [
+      { name: "572_consolegame", value: "1" },
+      { name: "536_Labelgeneration", value: "3" },
+      { name: "540_GoodsStory", value: "1" },
+      { name: "540_FirstContent", value: "5" },
+      { name: "2024_detail_20", value: "11" },
+      { name: "536_Labelgeneration", value: "11" },
     ],
-    mainSpuId: 0,
-    sourceFrom: "",
-    spuId: 26981283,
-  },
-  skuId: 927153807,
-  spuId: 26981283,
-  openId: "ouhDM4lHr9wumYpm81YLAvEVGSxI",
-  isFirst: true,
-};
+    dressUpReqMap: {
+      source: 0,
+      limit: 12,
+      productId,
+      cSpuPropertyValueId: 0,
+      firstSpuId: 0,
+      firstPropertyValueId: 0,
+      ab539CdjxBodyinfo: "0",
+      ab540Deletesidebar: "0",
+      switchoverMinPic: "",
+      ab525JingXuanMerge: "2",
+      ab534DpVideo: "0",
+    },
+    appraiseReqMap: {
+      spuId,
+      propertyValueId: 0,
+      abFields: { v535LV6wd: "0", abDetailpageSize: "0", v544NewDpModel: "0" },
+    },
+    buyLayerReq: {
+      bizDetailReq: {
+        openId,
+        appId: "h5",
+        extraMap: { app_type: "h5" },
+      },
+      extMap: { appId: "h5" },
+      anchorId: 0,
+      extBodys: [
+        { name: "gmfcpmd492", value: "0" },
+        { name: "550_shixiao", value: "1" },
+        { name: "detail2023promo", value: "0" },
+        { name: "5.30_fenqiWenan", value: "0" },
+        { name: "543_price", value: "0" },
+        { name: "543_lmsd", value: "0" },
+        { name: "544youhui", value: "0" },
+        { name: "545dingzi", value: "0" },
+        { name: "544xdk", value: "0" },
+        { name: "scene", value: "commodityDetail" },
+        { name: "businessDetailVersion", value: "V2" },
+      ],
+      mainSpuId: 0,
+      sourceFrom: "",
+      spuId,
+    },
+    skuId,
+    spuId,
+    openId,
+    isFirst: true,
+  };
+  const encryptText = obj.exports.encrypt(
+    JSON.stringify(reqData),
+    "POST",
+    "wx"
+  ).d;
+  const sign = getSign(reqData);
+  const headers = {
+    Host: "app.dewu.com",
+    appid_org: "wxapp",
+    ltk: "J8Ksw7bDpsOtK8KQwpPCq8KkBcOQwrnCssOPZcOmwpbCn8KhMzvCn3fDk8OhWsK9WwTDiwnCrV3DisOEwq5ucMKfQhnCqsKHwqTDvMO/w7LDlsK+",
+    SK: "9RcMN15ogzcj4Tvfrg1s7otTEFjcAkg8MSCrN1YffXWGSrUdFuRzF8WV85Xe2vpfUsOSNIKQ01f1P9V2g2ngycnx4o1v",
+    shumeiId: "2025111819374781f43dcaa4d0321a703931a179200b0800c0cc582eac2225",
+    "x-auth-token":
+      "Bearer eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NjM0NzcyMjIsImV4cCI6MTc5NTAxMzIyMiwidXNlcklkIjoyNzE1MDY5Njc4LCJ1c2VyTmFtZSI6IuW-l-eJqWVyLVM1TDBLOFo4IiwiaXNHdWVzdCI6ZmFsc2UsIlNLIjoiOVJjTU4xNW9nemNqNFR2ZnJnMXM3b3RURUZqY0FrZzhNU0NyTjFZZmZYV0dTclVkRnVSekY4V1Y4NVhlMnZwZlVzT1NOSUtRMDFmMVA5VjJnMm5neWNueDRvMXYifQ.TNRHvAl4fPNopjIHfksHl6Vj3IjHVg4sXa6Ztr5LErJArJgw5nfwjnzLRlqO7t6aTrr0DprAI0v70ttjrjb_WBcGLzuoQjGSq9EcKvkVZ7PEufODDgTOY3-Mw7MG0qRAMfMAHBDE2X2kFA_Atr27XS6FtqEDfKoJSon56sYb7g9ZlOx8KYyiWold0mDihSAzaOD7xRro3ujnp8W9niPgnaztbXfqnOt9zPPQ4AamitEeFDQ8e6GXc3EY9Bx7RuVUZxDt8XggFUMiW6fNI8raLiPq9Y3A5ibVVnT0D8hQv3Kcq-PFIsSzks4dKWwmbSOqI4_hbHLcn4UM71gc9TDdsQ",
+    duToken:
+      "1f0357db9d62a70653e0902c97727ee4bb0419f7e776718c9d5194af661353c0eb09aa824a4094de924f650449d3a47c|2715069678|1763479882|9db01c6c55eac16a5d661f0c0136a70f53594428|2-0",
+    cookieToken:
+      "1f0357db9d62a70653e0902c97727ee4bb0419f7e776718c9d5194af661353c0eb09aa824a4094de924f650449d3a47c|2715069678|1763479882|9db01c6c55eac16a5d661f0c0136a70f53594428|2-0",
+    traceparent: "00-f5097096691c914bc21a6a276d30f8d7-54b44a58d4c0bc2f-01",
+    "User-Agent": UA,
+    sessionid: "zkgbk1i4-7rv6-4ndi-zyk7-yg1vx5qflkoewegx",
+    adi: "YjRjNGVhZTczMGEwMjJmMzw6odwqoJd2tMJ8O5w75oCMKDREpCPRjDusOww6kewpVPWcKgwpfCrQ==",
+    skt: "hdr1",
+    sks: "1,hdw4",
+    appId: "h5",
+    platform: "h5",
+    appVersion: "5.52.0",
+    Origin: "https://fast.dewu.com",
+    "Sec-Fetch-Site": "same-site",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+    Referer: "https://fast.dewu.com/",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    Cookie:
+      "duToken=1f0357db9d62a70653e0902c97727ee4bb0419f7e776718c9d5194af661353c0eb09aa824a4094de924f650449d3a47c|2715069678|1763479882|9db01c6c55eac16a5d661f0c0136a70f53594428|2-0; xAuthToken=Bearer%20eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NjM0NzcyMjIsImV4cCI6MTc5NTAxMzIyMiwidXNlcklkIjoyNzE1MDY5Njc4LCJ1c2VyTmFtZSI6IuW-l-eJqWVyLVM1TDBLOFo4IiwiaXNHdWVzdCI6ZmFsc2UsIlNLIjoiOVJjTU4xNW9nemNqNFR2ZnJnMXM3b3RURUZqY0FrZzhNU0NyTjFZZmZYV0dTclVkRnVSekY4V1Y4NVhlMnZwZlVzT1NOSUtRMDFmMVA5VjJnMm5neWNueDRvMXYifQ.TNRHvAl4fPNopjIHfksHl6Vj3IjHVg4sXa6Ztr5LErJArJgw5nfwjnzLRlqO7t6aTrr0DprAI0v70ttjrjb_WBcGLzuoQjGSq9EcKvkVZ7PEufODDgTOY3-Mw7MG0qRAMfMAHBDE2X2kFA_Atr27XS6FtqEDfKoJSon56sYb7g9ZlOx8KYyiWold0mDihSAzaOD7xRro3ujnp8W9niPgnaztbXfqnOt9zPPQ4AamitEeFDQ8e6GXc3EY9Bx7RuVUZxDt8XggFUMiW6fNI8raLiPq9Y3A5ibVVnT0D8hQv3Kcq-PFIsSzks4dKWwmbSOqI4_hbHLcn4UM71gc9TDdsQ; dw_edge_er_cookie=51170b52-1354-fa32-d365-684929d30b51; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2219a97978e8c191c-088bf2b4c61399-673e1615-1760724-19a97978e8d250b%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2219a97978e8c191c-088bf2b4c61399-673e1615-1760724-19a97978e8d250b%22%7D; sk=9RcMN15ogzcj4Tvfrg1s7otTEFjcAkg8MSCrN1YffXWGSrUdFuRzF8WV85Xe2vpfUsOSNIKQ01f1P9V2g2ngycnx4o1v",
+  };
+  const res = await axios({
+    url,
+    method: "post",
+    params: {
+      sign,
+      // sign: "91eafa0498ed0301dbb092774826753a",
+    },
+    data: JSON.parse(encryptText),
+    // data: {
+    //   data: "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",
+    // },
+    headers,
+  });
+  console.log(res.data.data);
+}
 
-// const a = obj.exports.encrypt(JSON.stringify(reqData), "POST", "wx");
-
-// console.log("请求密文", reqDataCipher);
-
-const cipherText = `dd489a820067c0236b88212ad51486724kvWXmiPqAWxff6troJyYn5Zj7Pj0sHspIBjRF5X4bKkw0BL/JQFOeCr2Z8fiEB8OarCcGFko2TguHj75SH1oCyR5Lan5hSIUpHLdB6lH1EPWp7qh7F9fniUbVxV24qh3iG3OAeVnfeCLoW2ttUrsqy3aB3jEeAuI4mgOy0r4j0+uHrihjJ8nid9Obrt5Dx7roe1ON85LITvrPpZQQJsfYwRM0EtTgjXjq7zhGaI0QXjz7jPM5qMbkmizvJqurnzsJybsI+6jrPABFbSlL8If68jqsG1NyxFT+NCURVwbH9RdN2oxrmqV3iviVLsRSNQ42Pk7PxyWO3XvmIZYeXoxCmSCnW0NcCXkyDO44c4q39EoM/FmfU/6K0oVhlY9yKnlf91tusTRE9Gnbu50xYoBJ9yBIpgdcDlTZzFVLFSLn+ynZwVhKehVf+YgRV0bekxRVqHlFo/FSpepri2TG6apedB0BLVfswZnldAdtGSlyR8l1tCduBsZu9JwRVGt8Vp9F3yRGIJqg67SDZTqPnNMOEGq8WJS1A21NlbN2PqJK+u7r9qrAssGiXgB5d7tVOYRn9usqJPpFKEza/X2EZMkOJdv/aWuGzfL6w2bVrDOcu4PAtmBFYTqXx8vGbrTE00RcgEx5POZNL3zKGat0qwKe7RRDlRflZqT5VKRnwxU2iFGTXr3v382KVJOvT93u9W5MVHLk+BNUnJ3MgYcmfKrk+FG+3vchQH9/gv1flNzzhObyw+I5bw9TbmIWtChhAjcPtNYmL42mkBxjJoZ4wc1shRL3IsgsjP4U4UxwAvDd1QCJIY8x4PMV8PFml4fAsxQZX+sVZ/a0Epqbhsiu0oI4/RjDNeY45VzKMLtQqubsYJkIzL+iZM/rdGxxqqju9svvit+rscB6kyRk+6/pTxAeIw45kVmecHZIExC5dqTZvMryYd3CAqW3oFyqj6eYfi5Go6xS9+DGhxLIBr9KoUY+ePMbL4nr19qW4pTTz66vR/O079MAZfGRnWBB+mjyqY92oWkU14i5owMYJbKzcsKCcWvcfdc12+PiRKfXBgPKBO2/dGLXcTEVPDuvk/XZ7s79aZKC6Hlxu0q9OXAwIA/yL7m+oq3ODEmGedkfe19CUbV+EmBVHV2IMhkqlpxgJrhEF1I+H7omMG50ZDszRzpMfOh1zEPiKabgnnDyiu6a6R+v3wHfgEj0tmin02Bd0hIOYYLAThnon+VfdJOgSKf+++BRnbkcg9DiJrpt57W6QaRg5AFgu/pSAsjkGCpDtlfy9FmN4rFdBOlDE7vVKgA4XTytvMDeALisOBZMerVEaq1/Rw2LKN0JOPLoEI4dpGlW3mYlgKr0o5YKOkJzs9QL51XlOJ3D9V9SI6bEh3YTHVDB9Cy4WSMGDTGBudwS47fB0hzcUuLMK3qmUvbjkvVRJtWwBJZ7NdrVj5YwHsnnJx4JlYOUcLllhellRtQJsrrWreFN4wctONckrdzoTKYbtkaeC5D1uE2Bt+PhUEs9LZJCOFnhOO1jkqEjMW747tBfCERdJal+f9PXf/bPC2NOlgaE+ERuYj/afF7xi3jcuXreDClMntRcC2rUeUSaA8ZiVO9803sqmFaZXzAMsrldqDjdzWdv37P4S0oh5EbDXW8kvxeRc7gG+BRt9MfuRYLCRZt40NtAR2/FRC8kOnNa7COkCiih9RFISsYC3/jVYnibtbyI3l8XuCMOhYMqePGc2QN72VZVyZftSS19At9qOOS1tyuwpRevgb`;
-
-// const cipherText = JSON.parse(reqDataCipher).data
-
-const plainText = obj.exports.decrypt(cipherText, undefined, "1,1,0", "wx");
-console.log("明文", plainText);
-
-// console.log(cipherText);
+getDetailV5();

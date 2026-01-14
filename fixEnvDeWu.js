@@ -1307,7 +1307,6 @@ const obj = (function (eBreezy) {
             p = At;
             try {
               s && ((c = ar(s, i)), (u = "1"));
-              console.log(c);
             } catch (t) {
               (c = s), (u = kt);
             }
@@ -1525,7 +1524,7 @@ const obj = (function (eBreezy) {
   return tbreezy;
 })();
 
-export function getSign(t, e, n) {
+function getSign(t, e = "19bc545a393a25177083d4a748807cc0", n = false) {
   void 0 === e && (e = "048a9c4943398714b356a696503d2d36"),
     void 0 === n && (n = !1),
     n && console.log("转化前params=", t);
@@ -1569,13 +1568,15 @@ export function getSign(t, e, n) {
   );
 }
 
+var ua =
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 18_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.64(0x18004034) NetType/WIFI Language/zh_CN miniProgram/wx3c12cdd0ae8b1a7b";
 var wx = {
   getStorageSync: function (key) {
     switch (key) {
       case "sk":
         return "9RcMJnzlixXqOgOZqqRuNZZ7EUyURTRglrMC1OBNQu7cSSjqYEteoOutRcPDewuM7FDsRdTKmuH4M3SWACRXXEM9Hu1z";
       case "ua":
-        return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090a13) XWEB/8555";
+        return ua;
       case "enT":
         return "1";
       default:
@@ -1589,7 +1590,7 @@ var wx = {
 };
 
 const reqData = {
-  extDatas: [{ name: "source", value: "wx" }],
+  extDatas: [{ name: "source", value: "wxmini" }],
   abTests: [
     { name: "572_consolegame", value: "1" },
     { name: "536_Labelgeneration", value: "3" },
@@ -1601,7 +1602,7 @@ const reqData = {
   dressUpReqMap: {
     source: 0,
     limit: 12,
-    productId: 26981283,
+    productId: 1921830,
     cSpuPropertyValueId: 0,
     firstSpuId: 0,
     firstPropertyValueId: 0,
@@ -1612,17 +1613,17 @@ const reqData = {
     ab534DpVideo: "0",
   },
   appraiseReqMap: {
-    spuId: 26981283,
+    spuId: 1921830,
     propertyValueId: 0,
     abFields: { v535LV6wd: "0", abDetailpageSize: "0", v544NewDpModel: "0" },
   },
   buyLayerReq: {
     bizDetailReq: {
-      openId: "ouhDM4lHr9wumYpm81YLAvEVGSxI",
-      appId: "h5",
-      extraMap: { app_type: "h5" },
+      openId: "ouhDM4mnlPZd6d3poaSRhVrSR2kw",
+      appId: "wxapp",
+      extraMap: { app_type: "wxapp" },
     },
-    extMap: { appId: "h5" },
+    extMap: { appId: "wxapp" },
     anchorId: 0,
     extBodys: [
       { name: "gmfcpmd492", value: "0" },
@@ -1639,23 +1640,15 @@ const reqData = {
     ],
     mainSpuId: 0,
     sourceFrom: "",
-    spuId: 26981283,
+    spuId: 1921830,
   },
-  skuId: 927153807,
-  spuId: 26981283,
-  openId: "ouhDM4lHr9wumYpm81YLAvEVGSxI",
+  propertyValueId: 67622071,
+  spuId: 1921830,
+  openId: "ouhDM4mnlPZd6d3poaSRhVrSR2kw",
   isFirst: true,
 };
 
-// const a = obj.exports.encrypt(JSON.stringify(reqData), "POST", "wx");
+const sign = getSign({});
 
-// console.log("请求密文", reqDataCipher);
+console.log(sign);
 
-const cipherText = `dd489a820067c0236b88212ad51486724kvWXmiPqAWxff6troJyYn5Zj7Pj0sHspIBjRF5X4bKkw0BL/JQFOeCr2Z8fiEB8OarCcGFko2TguHj75SH1oCyR5Lan5hSIUpHLdB6lH1EPWp7qh7F9fniUbVxV24qh3iG3OAeVnfeCLoW2ttUrsqy3aB3jEeAuI4mgOy0r4j0+uHrihjJ8nid9Obrt5Dx7roe1ON85LITvrPpZQQJsfYwRM0EtTgjXjq7zhGaI0QXjz7jPM5qMbkmizvJqurnzsJybsI+6jrPABFbSlL8If68jqsG1NyxFT+NCURVwbH9RdN2oxrmqV3iviVLsRSNQ42Pk7PxyWO3XvmIZYeXoxCmSCnW0NcCXkyDO44c4q39EoM/FmfU/6K0oVhlY9yKnlf91tusTRE9Gnbu50xYoBJ9yBIpgdcDlTZzFVLFSLn+ynZwVhKehVf+YgRV0bekxRVqHlFo/FSpepri2TG6apedB0BLVfswZnldAdtGSlyR8l1tCduBsZu9JwRVGt8Vp9F3yRGIJqg67SDZTqPnNMOEGq8WJS1A21NlbN2PqJK+u7r9qrAssGiXgB5d7tVOYRn9usqJPpFKEza/X2EZMkOJdv/aWuGzfL6w2bVrDOcu4PAtmBFYTqXx8vGbrTE00RcgEx5POZNL3zKGat0qwKe7RRDlRflZqT5VKRnwxU2iFGTXr3v382KVJOvT93u9W5MVHLk+BNUnJ3MgYcmfKrk+FG+3vchQH9/gv1flNzzhObyw+I5bw9TbmIWtChhAjcPtNYmL42mkBxjJoZ4wc1shRL3IsgsjP4U4UxwAvDd1QCJIY8x4PMV8PFml4fAsxQZX+sVZ/a0Epqbhsiu0oI4/RjDNeY45VzKMLtQqubsYJkIzL+iZM/rdGxxqqju9svvit+rscB6kyRk+6/pTxAeIw45kVmecHZIExC5dqTZvMryYd3CAqW3oFyqj6eYfi5Go6xS9+DGhxLIBr9KoUY+ePMbL4nr19qW4pTTz66vR/O079MAZfGRnWBB+mjyqY92oWkU14i5owMYJbKzcsKCcWvcfdc12+PiRKfXBgPKBO2/dGLXcTEVPDuvk/XZ7s79aZKC6Hlxu0q9OXAwIA/yL7m+oq3ODEmGedkfe19CUbV+EmBVHV2IMhkqlpxgJrhEF1I+H7omMG50ZDszRzpMfOh1zEPiKabgnnDyiu6a6R+v3wHfgEj0tmin02Bd0hIOYYLAThnon+VfdJOgSKf+++BRnbkcg9DiJrpt57W6QaRg5AFgu/pSAsjkGCpDtlfy9FmN4rFdBOlDE7vVKgA4XTytvMDeALisOBZMerVEaq1/Rw2LKN0JOPLoEI4dpGlW3mYlgKr0o5YKOkJzs9QL51XlOJ3D9V9SI6bEh3YTHVDB9Cy4WSMGDTGBudwS47fB0hzcUuLMK3qmUvbjkvVRJtWwBJZ7NdrVj5YwHsnnJx4JlYOUcLllhellRtQJsrrWreFN4wctONckrdzoTKYbtkaeC5D1uE2Bt+PhUEs9LZJCOFnhOO1jkqEjMW747tBfCERdJal+f9PXf/bPC2NOlgaE+ERuYj/afF7xi3jcuXreDClMntRcC2rUeUSaA8ZiVO9803sqmFaZXzAMsrldqDjdzWdv37P4S0oh5EbDXW8kvxeRc7gG+BRt9MfuRYLCRZt40NtAR2/FRC8kOnNa7COkCiih9RFISsYC3/jVYnibtbyI3l8XuCMOhYMqePGc2QN72VZVyZftSS19At9qOOS1tyuwpRevgb`;
-
-// const cipherText = JSON.parse(reqDataCipher).data
-
-const plainText = obj.exports.decrypt(cipherText, undefined, "1,1,0", "wx");
-console.log("明文", plainText);
-
-// console.log(cipherText);
