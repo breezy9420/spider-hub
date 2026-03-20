@@ -61,7 +61,7 @@ function sanitizeFileName(name) {
 
 // 爬取书友社小说 https://www.shuyous.com
 const taskObj = {
-  bookInfoUrl: "https://www.shuyous.com/book/3231024.html",
+  bookInfoUrl: "https://www.shuyous.com/book/2453890.html",
   saveRootPath: "G:\\source\\小说文本",
 };
 
@@ -176,7 +176,7 @@ async function main() {
             await fs.writeFile(chapterSavePath, content, {
               encoding: "utf8",
             });
-            console.log(`获取${chapter.chaptername}成功`);
+            console.log(`获取 ${chapter.chapterorder} [${chapter.chaptername}]成功`);
           }
         }),
       );
