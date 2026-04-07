@@ -1,7 +1,7 @@
 import {
     getAstByJs,
     readFile, getJsByAst, writeFile
-} from "../../util/ast.js";
+} from "../../../util/ast.js";
 import types from "@babel/types";
 import traverseModule from "@babel/traverse";
 import * as path from "path";

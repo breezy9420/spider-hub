@@ -1,4 +1,4 @@
-import { readFile, writeFile, getJsByAst, getAstByJs } from "../../util/ast.js";
+import { readFile, writeFile, getJsByAst, getAstByJs } from "../../../util/ast.js";
 import types from "@babel/types";
 import traverseModule from "@babel/traverse";
 import * as path from "path";
@@ -94,35 +94,12 @@ var _0x5a05 = function (_0x1f6d14, _0x2b0eea) {
   var _0x19e984 = __0x118420[_0x1f6d14];
   if (_0x5a05["initialized"] === undefined) {
     (function () {
-      var _0x2dcf24 =
-        typeof window !== "undefined"
-          ? window
-          : typeof process === "object" &&
-              typeof require === "function" &&
-              typeof global === "object"
-            ? global
-            : this;
-      var _0x234f2d =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+      var _0x2dcf24 = typeof window !== "undefined" ? window : typeof process === "object" && typeof require === "function" && typeof global === "object" ? global : this;
+      var _0x234f2d = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       _0x2dcf24["atob"] ||
         (_0x2dcf24["atob"] = function (_0x12a38f) {
           var _0x3d0c49 = String(_0x12a38f)["replace"](/=+$/, "");
-          for (
-            var _0x2a2abf = 0x0,
-              _0x3f4904,
-              _0x5ebea5,
-              _0x4fd9d0 = 0x0,
-              _0x2239d3 = "";
-            (_0x5ebea5 = _0x3d0c49["charAt"](_0x4fd9d0++));
-            ~_0x5ebea5 &&
-            ((_0x3f4904 =
-              _0x2a2abf % 0x4 ? _0x3f4904 * 0x40 + _0x5ebea5 : _0x5ebea5),
-            _0x2a2abf++ % 0x4)
-              ? (_0x2239d3 += String["fromCharCode"](
-                  0xff & (_0x3f4904 >> ((-0x2 * _0x2a2abf) & 0x6)),
-                ))
-              : 0x0
-          ) {
+          for (var _0x2a2abf = 0x0, _0x3f4904, _0x5ebea5, _0x4fd9d0 = 0x0, _0x2239d3 = ""; (_0x5ebea5 = _0x3d0c49["charAt"](_0x4fd9d0++)); ~_0x5ebea5 && ((_0x3f4904 = _0x2a2abf % 0x4 ? _0x3f4904 * 0x40 + _0x5ebea5 : _0x5ebea5), _0x2a2abf++ % 0x4) ? (_0x2239d3 += String["fromCharCode"](0xff & (_0x3f4904 >> ((-0x2 * _0x2a2abf) & 0x6)))) : 0x0) {
             _0x5ebea5 = _0x234f2d["indexOf"](_0x5ebea5);
           }
           return _0x2239d3;
@@ -135,27 +112,15 @@ var _0x5a05 = function (_0x1f6d14, _0x2b0eea) {
         _0x4f6717 = "",
         _0x46c788 = "";
       _0x2f0b78 = atob(_0x2f0b78);
-      for (
-        var _0x597c7c = 0x0, _0x101e10 = _0x2f0b78["length"];
-        _0x597c7c < _0x101e10;
-        _0x597c7c++
-      ) {
-        _0x46c788 +=
-          "%" +
-          ("00" + _0x2f0b78["charCodeAt"](_0x597c7c)["toString"](0x10))[
-            "slice"
-          ](-0x2);
+      for (var _0x597c7c = 0x0, _0x101e10 = _0x2f0b78["length"]; _0x597c7c < _0x101e10; _0x597c7c++) {
+        _0x46c788 += "%" + ("00" + _0x2f0b78["charCodeAt"](_0x597c7c)["toString"](0x10))["slice"](-0x2);
       }
       _0x2f0b78 = decodeURIComponent(_0x46c788);
       for (var _0x53ca76 = 0x0; _0x53ca76 < 0x100; _0x53ca76++) {
         _0x38b58b[_0x53ca76] = _0x53ca76;
       }
       for (_0x53ca76 = 0x0; _0x53ca76 < 0x100; _0x53ca76++) {
-        _0x5096bf =
-          (_0x5096bf +
-            _0x38b58b[_0x53ca76] +
-            _0x1d02fc["charCodeAt"](_0x53ca76 % _0x1d02fc["length"])) %
-          0x100;
+        _0x5096bf = (_0x5096bf + _0x38b58b[_0x53ca76] + _0x1d02fc["charCodeAt"](_0x53ca76 % _0x1d02fc["length"])) % 0x100;
         _0x39c1ef = _0x38b58b[_0x53ca76];
         _0x38b58b[_0x53ca76] = _0x38b58b[_0x5096bf];
         _0x38b58b[_0x5096bf] = _0x39c1ef;
@@ -168,10 +133,7 @@ var _0x5a05 = function (_0x1f6d14, _0x2b0eea) {
         _0x39c1ef = _0x38b58b[_0x53ca76];
         _0x38b58b[_0x53ca76] = _0x38b58b[_0x5096bf];
         _0x38b58b[_0x5096bf] = _0x39c1ef;
-        _0x4f6717 += String["fromCharCode"](
-          _0x2f0b78["charCodeAt"](_0x52d802) ^
-            _0x38b58b[(_0x38b58b[_0x53ca76] + _0x38b58b[_0x5096bf]) % 0x100],
-        );
+        _0x4f6717 += String["fromCharCode"](_0x2f0b78["charCodeAt"](_0x52d802) ^ _0x38b58b[(_0x38b58b[_0x53ca76] + _0x38b58b[_0x5096bf]) % 0x100]);
       }
       return _0x4f6717;
     };
@@ -252,33 +214,19 @@ const _0x297e = function (_0x5382fd, _0x1f6775) {
       const _0x1f8ca6 = function () {
         let _0x388118;
         try {
-          _0x388118 = Function(
-            "return (function() " + '{}.constructor("return this")( )' + ");",
-          )();
+          _0x388118 = Function("return (function() " + '{}.constructor("return this")( )' + ");")();
         } catch (_0x11dc42) {
           _0x388118 = window;
         }
         return _0x388118;
       };
       const _0x357072 = _0x1f8ca6();
-      const _0x18b66c =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+      const _0x18b66c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       _0x357072["atob"] ||
         (_0x357072["atob"] = function (_0x3869fa) {
           const _0x46c547 = String(_0x3869fa)["replace"](/=+$/, "");
           let _0x512aca = "";
-          for (
-            let _0xfd143c = 0x0, _0x2eaa9c, _0x2ff2cc, _0x46d468 = 0x0;
-            (_0x2ff2cc = _0x46c547["charAt"](_0x46d468++));
-            ~_0x2ff2cc &&
-            ((_0x2eaa9c =
-              _0xfd143c % 0x4 ? _0x2eaa9c * 0x40 + _0x2ff2cc : _0x2ff2cc),
-            _0xfd143c++ % 0x4)
-              ? (_0x512aca += String["fromCharCode"](
-                  0xff & (_0x2eaa9c >> ((-0x2 * _0xfd143c) & 0x6)),
-                ))
-              : 0x0
-          ) {
+          for (let _0xfd143c = 0x0, _0x2eaa9c, _0x2ff2cc, _0x46d468 = 0x0; (_0x2ff2cc = _0x46c547["charAt"](_0x46d468++)); ~_0x2ff2cc && ((_0x2eaa9c = _0xfd143c % 0x4 ? _0x2eaa9c * 0x40 + _0x2ff2cc : _0x2ff2cc), _0xfd143c++ % 0x4) ? (_0x512aca += String["fromCharCode"](0xff & (_0x2eaa9c >> ((-0x2 * _0xfd143c) & 0x6)))) : 0x0) {
             _0x2ff2cc = _0x18b66c["indexOf"](_0x2ff2cc);
           }
           return _0x512aca;
@@ -291,16 +239,8 @@ const _0x297e = function (_0x5382fd, _0x1f6775) {
         _0x5a5f4a = "",
         _0x1d0258 = "";
       _0x467cfd = atob(_0x467cfd);
-      for (
-        let _0x3c1ff7 = 0x0, _0x49a67a = _0x467cfd["length"];
-        _0x3c1ff7 < _0x49a67a;
-        _0x3c1ff7++
-      ) {
-        _0x1d0258 +=
-          "%" +
-          ("00" + _0x467cfd["charCodeAt"](_0x3c1ff7)["toString"](0x10))[
-            "slice"
-          ](-0x2);
+      for (let _0x3c1ff7 = 0x0, _0x49a67a = _0x467cfd["length"]; _0x3c1ff7 < _0x49a67a; _0x3c1ff7++) {
+        _0x1d0258 += "%" + ("00" + _0x467cfd["charCodeAt"](_0x3c1ff7)["toString"](0x10))["slice"](-0x2);
       }
       _0x467cfd = decodeURIComponent(_0x1d0258);
       let _0x1702c5;
@@ -308,11 +248,7 @@ const _0x297e = function (_0x5382fd, _0x1f6775) {
         _0x1468c3[_0x1702c5] = _0x1702c5;
       }
       for (_0x1702c5 = 0x0; _0x1702c5 < 0x100; _0x1702c5++) {
-        _0xb931a1 =
-          (_0xb931a1 +
-            _0x1468c3[_0x1702c5] +
-            _0x585ffc["charCodeAt"](_0x1702c5 % _0x585ffc["length"])) %
-          0x100;
+        _0xb931a1 = (_0xb931a1 + _0x1468c3[_0x1702c5] + _0x585ffc["charCodeAt"](_0x1702c5 % _0x585ffc["length"])) % 0x100;
         _0x43d580 = _0x1468c3[_0x1702c5];
         _0x1468c3[_0x1702c5] = _0x1468c3[_0xb931a1];
         _0x1468c3[_0xb931a1] = _0x43d580;
@@ -325,10 +261,7 @@ const _0x297e = function (_0x5382fd, _0x1f6775) {
         _0x43d580 = _0x1468c3[_0x1702c5];
         _0x1468c3[_0x1702c5] = _0x1468c3[_0xb931a1];
         _0x1468c3[_0xb931a1] = _0x43d580;
-        _0x5a5f4a += String["fromCharCode"](
-          _0x467cfd["charCodeAt"](_0xd7ed26) ^
-            _0x1468c3[(_0x1468c3[_0x1702c5] + _0x1468c3[_0xb931a1]) % 0x100],
-        );
+        _0x5a5f4a += String["fromCharCode"](_0x467cfd["charCodeAt"](_0xd7ed26) ^ _0x1468c3[(_0x1468c3[_0x1702c5] + _0x1468c3[_0xb931a1]) % 0x100]);
       }
       return _0x5a5f4a;
     };
@@ -362,11 +295,7 @@ const _0x297e = function (_0x5382fd, _0x1f6775) {
         return this["EZnbNG"](this["BYPoFX"]);
       };
       _0x4507cb["prototype"]["EZnbNG"] = function (_0xc8959e) {
-        for (
-          let _0xbd7a63 = 0x0, _0x4e4cb8 = this["hbklOU"]["length"];
-          _0xbd7a63 < _0x4e4cb8;
-          _0xbd7a63++
-        ) {
+        for (let _0xbd7a63 = 0x0, _0x4e4cb8 = this["hbklOU"]["length"]; _0xbd7a63 < _0x4e4cb8; _0xbd7a63++) {
           this["hbklOU"]["push"](Math["round"](Math["random"]()));
           _0x4e4cb8 = this["hbklOU"]["length"];
         }
@@ -615,31 +544,17 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
     (function () {
       let _0x4b4368;
       try {
-        const _0x3f61d9 = Function(
-          "return (function() " + '{}.constructor("return this")( )' + ");",
-        );
+        const _0x3f61d9 = Function("return (function() " + '{}.constructor("return this")( )' + ");");
         _0x4b4368 = _0x3f61d9();
       } catch (_0x3e368d) {
         _0x4b4368 = window;
       }
-      const _0x57f6e0 =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+      const _0x57f6e0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       _0x4b4368["atob"] ||
         (_0x4b4368["atob"] = function (_0x507292) {
           const _0x2c44ed = String(_0x507292)["replace"](/=+$/, "");
           let _0x5c9abf = "";
-          for (
-            let _0x352b67 = 0x0, _0x484147, _0x4d2924, _0x4388a5 = 0x0;
-            (_0x4d2924 = _0x2c44ed["charAt"](_0x4388a5++));
-            ~_0x4d2924 &&
-            ((_0x484147 =
-              _0x352b67 % 0x4 ? _0x484147 * 0x40 + _0x4d2924 : _0x4d2924),
-            _0x352b67++ % 0x4)
-              ? (_0x5c9abf += String["fromCharCode"](
-                  0xff & (_0x484147 >> ((-0x2 * _0x352b67) & 0x6)),
-                ))
-              : 0x0
-          ) {
+          for (let _0x352b67 = 0x0, _0x484147, _0x4d2924, _0x4388a5 = 0x0; (_0x4d2924 = _0x2c44ed["charAt"](_0x4388a5++)); ~_0x4d2924 && ((_0x484147 = _0x352b67 % 0x4 ? _0x484147 * 0x40 + _0x4d2924 : _0x4d2924), _0x352b67++ % 0x4) ? (_0x5c9abf += String["fromCharCode"](0xff & (_0x484147 >> ((-0x2 * _0x352b67) & 0x6)))) : 0x0) {
             _0x4d2924 = _0x57f6e0["indexOf"](_0x4d2924);
           }
           return _0x5c9abf;
@@ -652,16 +567,8 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
         _0x33b11f = "",
         _0x4a9d50 = "";
       _0x207251 = atob(_0x207251);
-      for (
-        let _0x1895e9 = 0x0, _0x2edcfc = _0x207251["length"];
-        _0x1895e9 < _0x2edcfc;
-        _0x1895e9++
-      ) {
-        _0x4a9d50 +=
-          "%" +
-          ("00" + _0x207251["charCodeAt"](_0x1895e9)["toString"](0x10))[
-            "slice"
-          ](-0x2);
+      for (let _0x1895e9 = 0x0, _0x2edcfc = _0x207251["length"]; _0x1895e9 < _0x2edcfc; _0x1895e9++) {
+        _0x4a9d50 += "%" + ("00" + _0x207251["charCodeAt"](_0x1895e9)["toString"](0x10))["slice"](-0x2);
       }
       _0x207251 = decodeURIComponent(_0x4a9d50);
       let _0x43cd00;
@@ -669,11 +576,7 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
         _0x377bb1[_0x43cd00] = _0x43cd00;
       }
       for (_0x43cd00 = 0x0; _0x43cd00 < 0x100; _0x43cd00++) {
-        _0x46f3ab =
-          (_0x46f3ab +
-            _0x377bb1[_0x43cd00] +
-            _0x13fe70["charCodeAt"](_0x43cd00 % _0x13fe70["length"])) %
-          0x100;
+        _0x46f3ab = (_0x46f3ab + _0x377bb1[_0x43cd00] + _0x13fe70["charCodeAt"](_0x43cd00 % _0x13fe70["length"])) % 0x100;
         _0x18d422 = _0x377bb1[_0x43cd00];
         _0x377bb1[_0x43cd00] = _0x377bb1[_0x46f3ab];
         _0x377bb1[_0x46f3ab] = _0x18d422;
@@ -686,10 +589,7 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
         _0x18d422 = _0x377bb1[_0x43cd00];
         _0x377bb1[_0x43cd00] = _0x377bb1[_0x46f3ab];
         _0x377bb1[_0x46f3ab] = _0x18d422;
-        _0x33b11f += String["fromCharCode"](
-          _0x207251["charCodeAt"](_0x139197) ^
-            _0x377bb1[(_0x377bb1[_0x43cd00] + _0x377bb1[_0x46f3ab]) % 0x100],
-        );
+        _0x33b11f += String["fromCharCode"](_0x207251["charCodeAt"](_0x139197) ^ _0x377bb1[(_0x377bb1[_0x43cd00] + _0x377bb1[_0x46f3ab]) % 0x100]);
       }
       return _0x33b11f;
     };
@@ -714,9 +614,7 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
         // const _0x1da710 = _0x9bcc55["test"](this["LVtJeH"]["toString"]())
         //   ? --this["jiLzOh"][0x1]
         //   : --this["jiLzOh"][0x0];
-        const _0x1da710 = true
-          ? --this["jiLzOh"][0x1]
-          : --this["jiLzOh"][0x0];
+        const _0x1da710 = true ? --this["jiLzOh"][0x1] : --this["jiLzOh"][0x0];
         return this["IuoVlP"](_0x1da710);
       };
       _0x271654["prototype"]["IuoVlP"] = function (_0x1819ad) {
@@ -726,11 +624,7 @@ const _0x4fc6 = function (_0x346e56, _0x32179c) {
         return this["hatORN"](this["YWtJzb"]);
       };
       _0x271654["prototype"]["hatORN"] = function (_0x36178b) {
-        for (
-          let _0x464df1 = 0x0, _0x5d3afd = this["jiLzOh"]["length"];
-          _0x464df1 < _0x5d3afd;
-          _0x464df1++
-        ) {
+        for (let _0x464df1 = 0x0, _0x5d3afd = this["jiLzOh"]["length"]; _0x464df1 < _0x5d3afd; _0x464df1++) {
           this["jiLzOh"]["push"](Math["round"](Math["random"]()));
           _0x5d3afd = this["jiLzOh"]["length"];
         }
@@ -777,9 +671,7 @@ function encryptStr(path, name) {
           };
           const plainText = fnMap[name](param1.value, param2.value);
           p.parentPath.replaceWith(types.stringLiteral(plainText));
-          console.log(
-            `字符串解密${name}:${leftName}('${param1.value}','${param2.value}') => ${plainText}`,
-          );
+          console.log(`字符串解密${name}:${leftName}('${param1.value}','${param2.value}') => ${plainText}`);
         } else {
           encryptStr(p.parentPath, leftName);
         }
@@ -789,8 +681,7 @@ function encryptStr(path, name) {
 }
 
 function hexStringToStr(hexString) {
-  const reg =
-    /\\(?:x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4})|u\{([0-9a-fA-F]{1,6})\})/gi;
+  const reg = /\\(?:x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4})|u\{([0-9a-fA-F]{1,6})\})/gi;
 
   return hexString.replaceAll(reg, (match, hex, unicode, unicodeBraced) => {
     const codePoint = parseInt(hex || unicode || unicodeBraced, 16);
@@ -833,10 +724,7 @@ function decryptHexStr(originCode) {
 }
 
 async function main() {
-  const encryptJsPath = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "./cesium-example-origin.js",
-  );
+  const encryptJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./cesium-example-origin.js");
   let jsCode = await readFile(encryptJsPath);
   jsCode = decryptHexStr(jsCode);
   const ast = getAstByJs(jsCode);
@@ -856,10 +744,7 @@ async function main() {
   });
   let newJsCode = getJsByAst(ast);
   newJsCode = decryptHexStr(newJsCode);
-  const outputJsPath = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "./cesium-example-origin_decrypt.js",
-  );
+  const outputJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./cesium-example-origin_decrypt.js");
   await writeFile(outputJsPath, newJsCode);
   console.log("还原结束");
 }
