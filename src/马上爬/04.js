@@ -24,7 +24,7 @@ async function parseInfo(i) {
         headers: {
             referer: "https://www.mashangpa.com/problem-detail/4/",
             cookie:
-                "Hm_lvt_0d2227abf9548feda3b9cb6fddee26c0=1748525410; HMACCOUNT=E89D26E56A5B5708; sessionid=au4wtawlqdov9imyo6xf1fpql1pi2x5g; Hm_lpvt_0d2227abf9548feda3b9cb6fddee26c0=1748526609",
+                "_nano_fp=XpmjX5XyXq9qlpEYXT_fwJwscA~y9eEZGaNicsdi; Hm_lvt_0d2227abf9548feda3b9cb6fddee26c0=1775563086; HMACCOUNT=EAC266F93ECB9023; sessionid=yvopxawudzg0s0ee2fjrnwol8ymb7bem; Hm_lpvt_0d2227abf9548feda3b9cb6fddee26c0=1775563302",
             "User-Agent":
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
         },
