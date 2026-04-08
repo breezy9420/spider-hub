@@ -4,35 +4,37 @@ import types from "@babel/types";
 import traverseModule from "@babel/traverse";
 import * as path from "path";
 import { fileURLToPath } from "url";
+import { isNil } from "lodash-es";
 
 const traverse = traverseModule.default || traverseModule;
 
 var window = {};
 
-var _0x2ba6ea26 = Object;
-var _0x2ba6ea27 = decodeURIComponent;
-var _0x2ba6ea28 = escape;
-var _0x2ba6ea29 = atob;
-var _0x2ba6ea30 = String;
-var _0x2ba6ea31 = window;
-var _0x2ba6ea32 = console;
-var _0x2ba6ea33 = URLSearchParams;
-var _0x2ba6ea34 = document;
-var _0x2ba6ea35 = isNaN;
-var _0x2ba6ea36 = parseInt;
-var _0x2ba6ea37 = location;
-var _0x2ba6ea38 = Array;
-var _0x2ba6ea39 = Math;
-var _0x2ba6ea40 = setInterval;
-var _0x2ba6ea41 = setTimeout;
-var _0x2ba6ea42 = performance;
-var _0x2ba6ea43 = Set;
-var _0x2ba6ea44 = fetch;
-var _0x2ba6ea45 = Error;
-var _0x2ba6ea46 = JSON;
-var _0x2ba6ea47 = NaN;
-var _0x2ba6ea48 = Date;
-var _0x2ba6ea49 = _0x2ba6ea26["create"](null);
+const variableMap = {
+  _0x2ba6ea26: "Object",
+  _0x2ba6ea27: "decodeURIComponent",
+  _0x2ba6ea28: "escape",
+  _0x2ba6ea29: "atob",
+  _0x2ba6ea30: "String",
+  _0x2ba6ea31: "window",
+  _0x2ba6ea32: "console",
+  _0x2ba6ea33: "URLSearchParams",
+  _0x2ba6ea34: "document",
+  _0x2ba6ea35: "isNaN",
+  _0x2ba6ea36: "parseInt",
+  _0x2ba6ea37: "location",
+  _0x2ba6ea38: "Array",
+  _0x2ba6ea39: "Math",
+  _0x2ba6ea40: "setInterval",
+  _0x2ba6ea41: "setTimeout",
+  _0x2ba6ea42: "performance",
+  _0x2ba6ea43: "Set",
+  _0x2ba6ea44: "fetch",
+  _0x2ba6ea45: "Error",
+  _0x2ba6ea46: "JSON",
+  _0x2ba6ea47: "NaN",
+  _0x2ba6ea48: "Date",
+};
 
 const _0x2ba6ea51 = [
   "Hw==",
@@ -672,6 +674,24 @@ const _0x2ba6ea51 = [
   "Px8IAAAW",
 ];
 
+function restoreGlobals(path) {
+  if (types.isIdentifier(path.node.init)) {
+    const name = path.node.init.name;
+    if (Object.values(variableMap).includes(name)) {
+      const key = Object.keys(variableMap).find((key) => variableMap[key] === name);
+      const binding = path.scope.getBinding(key);
+      if (binding) {
+        const { referencePaths } = binding;
+        for (const p of referencePaths) {
+          const newName = variableMap[key];
+          p.replaceWith(types.identifier(newName));
+          // console.log(`restoreGlobals: ${key} -> ${name}`);
+        }
+      }
+    }
+  }
+}
+
 // 去除未引用代码
 function removeUnusedCode(path) {
   const binding = path.scope.getBinding(path.node.name);
@@ -680,7 +700,7 @@ function removeUnusedCode(path) {
     if (referencePaths.length === 0) {
       if (types.isVariableDeclarator(path.parentPath)) {
         path.parentPath.remove();
-        console.log(`remove ${path.node.name}`);
+        // console.log(`remove ${path.node.name}`);
       }
     }
   }
@@ -696,17 +716,16 @@ function computedCommon(path) {
     computedCommon(path.get("right"));
   }
 
-  if (types.isLiteral(path.node.left) && types.isLiteral(path.node.right)) {
-    const leftVal = path.node.left.value;
-    const rightVal = path.node.right.value;
-    const operator = path.node.operator;
-    if (!isNaN(leftVal) && !isNaN(rightVal)) {
-      const val = eval(leftVal + operator + rightVal).toString();
-      if (!isNaN(val)) {
-        path.replaceWith(types.stringLiteral(val));
-        console.log(`computedCommon: ${val}`);
-      }
+  const { confident, value } = path.evaluate();
+  if (confident) {
+    let val;
+    try {
+      val = eval(value).toString();
+    } catch (error) {
+      val = value.toString();
     }
+    console.log(`computedCommon: ${val}`);
+    path.replaceWith(types.stringLiteral(val));
   }
 }
 
@@ -719,13 +738,48 @@ function encryptStr(path, name) {
       for (const p of referencePaths) {
         if (types.isMemberExpression(p.parentPath)) {
           const index = p.parentPath.node.property.value;
-          if (index) {
-            const plainText = _0x2ba6ea51[index];
-            console.log(`字符串解密${name}:${leftName}['${index}'] => ${plainText}`);
+          const plainText = _0x2ba6ea51[index];
+          if (!isNil(index) && !isNil(plainText)) {
+            // console.log(`字符串解密${name}:${leftName}['${index}'] => ${plainText}`);
             p.parentPath.replaceWith(types.stringLiteral(plainText));
           }
         } else {
           encryptStr(p.parentPath, leftName);
+        }
+      }
+    }
+  }
+}
+
+function _0x2ba6ea10(_0x2ba6ea50) {
+  var [_0x2ba6ea64, _0x2ba6ea65] = _0x2ba6ea50;
+  try {
+    var xorEncrypted;
+    xorEncrypted = decodeURIComponent(escape(atob(_0x2ba6ea64)));
+    var result = "";
+    for (var i = 0; i < xorEncrypted.length; i++) {
+      result += String.fromCharCode(xorEncrypted.charCodeAt(i) ^ _0x2ba6ea65.charCodeAt(i % _0x2ba6ea65.length));
+    }
+    return result;
+  } catch (e) {
+    return String["fromCharCode"](0x0);
+  }
+}
+function encrypt_0x2ba6ea50(path) {
+  if (types.isIdentifier(path.node.init, { name: "_0x2ba6ea50" })) {
+    const bindings = path.scope.getBinding("_0x2ba6ea50");
+    for (const p of bindings?.constantViolations) {
+      const right = p.get("right");
+      if (types.isArrayExpression(right.node)) {
+        const [_0x2ba6ea51, _0x2ba6ea52] = right.node.elements;
+        if (types.isLiteral(_0x2ba6ea51) && types.isLiteral(_0x2ba6ea52)) {
+          const _0x2ba6ea53 = _0x2ba6ea10([_0x2ba6ea51.value, _0x2ba6ea52.value]);
+          // if (_0x2ba6ea53) {
+          //   right.replaceWith(types.stringLiteral(_0x2ba6ea53));
+          // }
+          if (_0x2ba6ea53 && types.isSequenceExpression(p.parentPath.node)) {
+            p.parentPath.replaceWith(types.stringLiteral(_0x2ba6ea53));
+          }
         }
       }
     }
@@ -737,18 +791,30 @@ async function main() {
   let jsCode = await readFile(encryptJsPath);
   // jsCode = decryptHexStr(jsCode);
   const ast = getAstByJs(jsCode);
-  // 字符串解密
-
   traverse(ast, {
     BinaryExpression(path) {
       computedCommon(path);
-      computedCommon(path);
+    },
+  });
+  traverse(ast, {
+    VariableDeclarator(path) {
+      encryptStr(path, "_0x2ba6ea51");
+    },
+  });
+  traverse(ast, {
+    VariableDeclarator(path) {
+      restoreGlobals(path);
     },
   });
 
   traverse(ast, {
     VariableDeclarator(path) {
-      encryptStr(path, "_0x2ba6ea51");
+      encrypt_0x2ba6ea50(path);
+    },
+  });
+  traverse(ast, {
+    BinaryExpression(path) {
+      computedCommon(path);
     },
   });
 
@@ -759,9 +825,10 @@ async function main() {
     },
   });
   let newJsCode = getJsByAst(newAst);
+  newJsCode = decryptHexStr(newJsCode);
   const outputJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./4_wasm_challenge_decrypt.js");
   await writeFile(outputJsPath, newJsCode);
   console.log("还原结束");
 }
 
-main();
+main().catch((err) => console.error(err));
