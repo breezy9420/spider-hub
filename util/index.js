@@ -1,10 +1,15 @@
 import UserAgent from "user-agents";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
+
+export const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.resolve(path.dirname(__filename), "../");
 
 /*
  * @params type: "desktop" | "mobile" | "tablet"
@@ -30,10 +35,8 @@ export function uint8ArrayToString(u8) {
   return new TextDecoder("utf-8").decode(u8);
 }
 
-
 export function hexStringToStr(hexString) {
-  const reg =
-    /\\(?:x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4})|u\{([0-9a-fA-F]{1,6})\})/gi;
+  const reg = /\\(?:x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4})|u\{([0-9a-fA-F]{1,6})\})/gi;
 
   return hexString.replaceAll(reg, (match, hex, unicode, unicodeBraced) => {
     const codePoint = parseInt(hex || unicode || unicodeBraced, 16);

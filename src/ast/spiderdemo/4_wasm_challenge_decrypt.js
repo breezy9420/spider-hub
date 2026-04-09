@@ -145,7 +145,6 @@ function _0x2ba6ea52(_0x2ba6ea59, _0x2ba6ea60, _0x2ba6ea61, fnLengths = {}) {
       _0x2ba6ea58 = _0x2ba6ea52("_0x2ba6ea12", "_0x2ba6ea5"), console["log"]("当前挑战类型:", _0x2ba6ea58), new _0x2ba6ea52("_0x2ba6ea14", "_0x2ba6ea5", "_0x2ba6ea7")["_0x2ba6ea8"], loadPageData(1), _0x2ba6ea52("_0x2ba6ea22", "_0x2ba6ea5"), initAntiDebugger();
     },
     _0x2ba6ea24: function () {
-      debugger
       try {
         if ("true" && console["table"]["function toString() { [native code] }"]() !== "function table() { [native code] }") {
           location["href"] = "https://spiderbox.cn/?utm_source=spiderdemo";
@@ -219,13 +218,12 @@ function _0x2ba6ea52(_0x2ba6ea59, _0x2ba6ea60, _0x2ba6ea61, fnLengths = {}) {
           return "fRgYlg";
         }
       } catch (error) {
-        // location["href"] = "https://spiderbox.cn/?utm_source=spiderdemo";
-        // document["body"]["innerHTML"] = "检测到调试环境，页面已被保护。";
+        location["href"] = "https://spiderbox.cn/?utm_source=spiderdemo";
+        document["body"]["innerHTML"] = "检测到调试环境，页面已被保护。";
         return true;
       }
     },
     _0x2ba6ea25: function () {
-      debugger
       var [_0x2ba6ea93, _0x2ba6ea94, _0x2ba6ea95, _0x2ba6ea96] = _0x2ba6ea50;
       _0x2ba6ea93 = performance["now"](), _0x2ba6ea52("_0x2ba6ea24", "_0x2ba6ea5", "_0x2ba6ea7")["_0x2ba6ea8"], _0x2ba6ea94 = window["function Array() { [native code] }"]("1000")["fill"]()["map"](function (_0x2ba6ea97, _0x2ba6ea98) {
         if ("true") {
