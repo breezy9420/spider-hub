@@ -47,3 +47,5 @@ chrome-profile/
 # Package manager lock files
 package-lock.json
 yarn.lock
+
+*_decrypt.js
