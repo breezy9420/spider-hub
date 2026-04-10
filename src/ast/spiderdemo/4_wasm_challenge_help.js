@@ -1,5 +1,4 @@
-import { readFile, writeFile, getJsByAst, getAstByJs } from "../../../util/ast.js";
-import { decryptHexStr } from "../../../util/index.js";
+import { readFile, writeFile, getJsByAst, getAstByJs,decryptHexStr } from "../../../util/ast.js";
 import types from "@babel/types";
 import traverseModule from "@babel/traverse";
 import * as path from "path";
