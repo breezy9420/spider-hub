@@ -80,7 +80,7 @@ export function decryptHexStr(originCode) {
     if (!/\\x|\\u/i.test(content)) return match;
 
     const plainText = hexStringToStr(content);
-    // console.log(`${match} => ${plainText}`);
+    console.log(`${match} => ${plainText}`);
 
     // 关键：根据原始引号类型，转义相应的特殊字符
     let escaped = plainText
