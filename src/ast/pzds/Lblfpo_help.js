@@ -1,10 +1,4 @@
-import {
-  readFile,
-  writeFile,
-  getJsByAst,
-  getAstByJs,
-  decryptHexStr,
-} from "../../../util/ast.js";
+import { readFile, writeFile, getJsByAst, getAstByJs, decryptHexStr } from "../../../util/ast.js";
 import { __dirname } from "../../../util/index.js";
 import types from "@babel/types";
 import traverseModule from "@babel/traverse";
@@ -14,10 +8,8 @@ import fs from "fs";
 import vm from "node:vm";
 
 const traverse = traverseModule.default || traverseModule;
-var qa = 116;
-var Zi = 632;
 var tk = 276;
-var t=  [];
+var t = [175];
 
 // 解密上下文：每次 eval 前会把抠出来的依赖文件在这里跑一遍
 const decryptCtx = vm.createContext({});
@@ -556,9 +548,9 @@ function U() {
     "iQI22Oz",
     "uQ4/AESEOVK3F8",
     "QiauZ9j",
-    "uHZdvtc",
-  ],
-  t = [];
+    "uHZdvtc"
+],
+    t = [];
   U = function () {
     return ts;
   };
@@ -568,51 +560,38 @@ function i(S, n) {
   var K = U();
   return (
     (i = function (f, x) {
-      f = f - 116;
+      f = f - (-0x255 + 0x1 * -0x3a9 + 0x6e * 0xf);
       var Z = K[f];
       if (i["zOGjGa"] === undefined) {
         function M() {
-          var d = Math["pow"](-274 + tk, 31) - (-275 + tk),
-            B = 47995 + tk,
-            c = -276 + tk;
-          var R = t[t["length"] - (-275 + tk)] % d;
+          var d = Math["pow"](0x1 * 0x1ff7 + -0xb60 * -0x1 + -0x2c69 + tk, -0x4b9 * 0x3 + -0x1d0f + 0x2b59) - (-0x10e8 + 0x2b * -0x2b + 0x170e + tk),
+            B = -0x176b8 + 0x52 * -0x250 + 0xb * 0x4459 + tk,
+            c = 0xb * -0x43 + -0xeac + 0x1 * 0x1079 + tk;
+          var R = t[t["length"] - (0x25f * 0xb + 0x15b2 + -0x30da + tk)] % d;
           function D() {
             return ((R = (B * R + c) % d), R);
           }
           return function () {
-            return D() % 64;
+            return D() % (-0x907 + 0x2 * 0x823 + -0x255 * 0x3);
           };
         }
         var E = function (d) {
-          var B =
-            "jrpRsx/onXKeP6aOkw2AiQhvWuZVT9N+01YLqUBlfG43JCFtz7gDcHIy5bEdmS8M=";
+          var B = "jrpRsx/onXKeP6aOkw2AiQhvWuZVT9N+01YLqUBlfG43JCFtz7gDcHIy5bEdmS8M=";
           var c = "",
             R = "",
             D = M();
           D();
-          for (
-            var V = -276 + tk, m, I, g = -276 + tk;
-            (I = d["charAt"](g++));
-            ~I && ((m = V % 4 ? m * 64 + I : I), V++ % (-272 + tk))
-              ? (c += String["fromCharCode"](
-                  255 & (m >> ((-(-274 + tk) * V) & 6)),
-                ))
-              : 0
-          ) {
+          for (var V = -0x2081 + -0x36d * -0x9 + 0x2 * 0x4c + tk, m, I, g = 0x1de4 + -0x1e98 + -0x3 * 0x20 + tk; (I = d["charAt"](g++)); ~I && ((m = V % (-0xd * 0x2a2 + -0x497 + -0x26d5 * -0x1) ? m * (-0x3d1 * -0x2 + -0x239 * 0x7 + 0x5b * 0x17) + I : I), V++ % (0x1 * 0x2076 + -0x96a + -0x181c + tk)) ? (c += String["fromCharCode"]((-0x14 * -0x41 + -0x24c + -0x1c9) & (m >> ((-(-0x4eb + 0x1 * -0x24f2 + 0x1 * 0x28cb + tk) * V) & (0x155 * -0x1 + -0x2 * 0xd5b + -0x1 * -0x1c11))))) : -0x15 * -0xa7 + 0x8 * 0x4d4 + -0x3453) {
             I = B["indexOf"](I) ^ D();
           }
-          for (var s = 0, p = c["length"]; s < p; s++) {
-            R +=
-              "%" +
-              ("00" + c["charCodeAt"](s)["toString"](-260 + tk))["slice"](
-                -(-274 + tk),
-              );
+          for (var s = -0x61c + 0x23fd + 0x1 * -0x1de1, p = c["length"]; s < p; s++) {
+            R += "%" + ("00" + c["charCodeAt"](s)["toString"](0x1 * -0x8e1 + 0x2501 + -0xe92 * 0x2 + tk))["slice"](-(0xc52 + -0x2595 + 0x1831 + tk));
           }
           return decodeURIComponent(R);
         };
         ((i["gYzYau"] = E), (S = arguments), (i["zOGjGa"] = !![]));
       }
-      var b = K[0],
+      var b = K[-0x18b7 + -0x2634 + 0x3eeb],
         j = f + b,
         W = S[j];
       return (!W ? ((Z = i["gYzYau"](Z)), (S[j] = Z)) : (Z = W), Z);
@@ -636,10 +615,7 @@ function removeUnusedCode(path) {
 }
 
 function encryptStr(path, name) {
-  if (
-    types.isIdentifier(path.node.id, { name }) ||
-    types.isIdentifier(path.node.init, { name })
-  ) {
+  if (types.isIdentifier(path.node.id, { name }) || types.isIdentifier(path.node.init, { name })) {
     const leftName = path.node.id.name;
     const binding = path.scope.getBinding(leftName);
     if (binding) {
@@ -648,16 +624,15 @@ function encryptStr(path, name) {
         if (types.isCallExpression(p.parentPath)) {
           const expression = p.parentPath.toString();
           if (~expression.indexOf(leftName)) {
-            const [param1] = [...expression.matchAll(/\(([^)]*)\)/g)].map(
-              (m) => m[1],
-            );
+            const [param1] = [...expression.matchAll(/\(([^)]*)\)/g)].map((m) => m[1]);
             const param1Val = vm.runInContext(param1, decryptCtx);
-            const plainText = i(param1Val);
+            console.log(`before|param1Val:${param1Val}`);
+            const plainText = i(+param1Val);
             p.parentPath.replaceWith(types.stringLiteral(plainText));
             // console.log(`字符串解密${name}:${leftName}('${param1}) -> ${plainText}'`);
           }
         } else {
-          //   encryptStr(p.parentPath, leftName);
+          // encryptStr(p.parentPath, leftName);
           if (p.parentPath.node.id?.name) {
             encryptStr(p.parentPath, p.parentPath.node.id.name);
           }
@@ -703,9 +678,14 @@ function findIdentifier(ast, name) {
     VariableDeclarator(astPath) {
       if (types.isObjectExpression(astPath.node.init)) {
         const code = `var ${astPath.toString()};\n`;
-        fs.writeFileSync(tmpDecryptPath, code, {
-          flag: "a",
-        });
+        try {
+          eval(code);
+          fs.writeFileSync(tmpDecryptPath, code, {
+            flag: "a",
+          });
+        } catch (error) {
+          console.error("findIdentifier", error);
+        }
         // console.log(`抠出对象声明: ${name}`);
       }
     },
@@ -713,10 +693,7 @@ function findIdentifier(ast, name) {
 }
 
 async function main() {
-  const encryptJsPath = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "./Lblfpo.js",
-  );
+  const encryptJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./Lblfpo.js");
   let jsCode = await readFile(encryptJsPath);
   jsCode = decryptHexStr(jsCode);
   const ast = getAstByJs(jsCode);
@@ -735,14 +712,14 @@ async function main() {
     traverse(ast, {
       VariableDeclarator(path) {
         try {
-          encryptStr(path, "i");
+          encryptStr(path, "LA");
         } catch (error) {
           if (~error.message.indexOf("is not defined")) {
             const [name] = error.message.split(" ");
             findIdentifier(ast, name);
             maxNum++;
           }
-          console.log(error);
+          console.error(error);
         }
       },
     });
@@ -760,12 +737,11 @@ async function main() {
   });
   let newJsCode = getJsByAst(newAst);
   newJsCode = decryptHexStr(newJsCode);
-  const outputJsPath = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "./Lblfpo_decrypt.js",
-  );
+  const outputJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./Lblfpo_decrypt.js");
   await writeFile(outputJsPath, newJsCode);
   console.log("还原结束");
 }
 
 main();
+
+// console.log(i(301));
