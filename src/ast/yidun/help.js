@@ -1658,11 +1658,11 @@ async function main() {
 
   // 删除未引用代码
   let newAst = getAstByJs(getJsByAst(ast));
-  // traverse(newAst, {
-  //   Identifier(path) {
-  //     removeUnusedCode(path);
-  //   },
-  // });
+  traverse(newAst, {
+    Identifier(path) {
+      removeUnusedCode(path);
+    },
+  });
   let newJsCode = getJsByAst(newAst);
   newJsCode = decryptHexStr(newJsCode);
   const outputJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./core-optimi.m25b40.v2.28.5.min_decrypt.js");
