@@ -1,8 +1,10 @@
-var window = {
-  [Symbol.toStringTag]: "Window",
-};
-window.window = window.self = window;
-globalThis.window = globalThis.self = window;
+// var window = {
+//   [Symbol.toStringTag]: "Window",
+// };
+// window.window = window.self = window;
+// globalThis.window = globalThis.self = window;
+
+window = global
 
 // copy(location)
 location = {
