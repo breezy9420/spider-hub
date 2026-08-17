@@ -1554,7 +1554,6 @@ var a0_0x3d6e = [
   "Lfp4Lc9AtodIC2wTKoy0",
   "tow5YSs",
 ];
-
 function a0_0x1e60(_0x3d6ee5, _0x1e6084) {
   _0x3d6ee5 = _0x3d6ee5 - 0x0;
   var _0x4bdd0c = a0_0x3d6e[_0x3d6ee5];
@@ -1642,7 +1641,7 @@ function computedCommon(path, type = "number") {
 async function main() {
   const encryptJsPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./core-optimi.m25b40.v2.28.5.min.js");
   let jsCode = await readFile(encryptJsPath);
-  jsCode = decryptHexStr(jsCode);
+  // jsCode = decryptHexStr(jsCode);
   const ast = getAstByJs(jsCode);
   // traverse(ast, {
   //   BinaryExpression(path) {
